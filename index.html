@@ -4,21 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>C++ - the Newest Old Language</title>
+    <title>Why C++ isn't dead</title>
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
     <link rel="stylesheet" href="reveal.js/css/theme/black.css">
 
     <style>
-        .reveal h1,
-        .reveal h2,
-        .reveal h3,
-        .reveal h4,
-        .reveal h5,
-        .reveal h6 {
-            font-family: "Liberation Sans", Helvetica, sans-serif !important;
-        }
-
         .reveal .slides section .fragment.highlight-current-code {
             opacity: 1;
             visibility: inherit;
@@ -51,15 +42,13 @@
 <body>
 <div class="reveal">
     <div class="slides">
-        <section data-background="GOTO_Intro.png"></section>
-        <!-------------->
-
-        <section data-background="GOTO_bg.png">
-            <h3><img class="no-border" src="cpp_logo.svg"><br>the Newest Old Language</h3>
-            <h5>Matt Godbolt</h5>
+        <section>
+            <h3><img class="no-border" src="cpp_logo.svg"><br>Why C++ isn't dead</h3>
+            <h5>Matt Godbolt<br><a href="https://twitter.com/mattgodbolt">@mattgodbolt</a></h5>
+            <h5>Avast, June 2018</h5>
         </section>
 
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Who uses C++?</h3>
             <ul class="fragment">
                 <li>Games</li>
@@ -73,7 +62,7 @@
                 I'm sure there's more out there.
             </aside>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>But why C++?</h3>
             <aside class="notes">
                 Why do we use C++? Probably performance, or to interoperate with hardware easily.
@@ -81,20 +70,20 @@
                 Let's take a look at C++'s strengths.
             </aside>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>C++ strengths</h3>
             <ul>
-                <li>Value types</li>
                 <li>Clear object lifetimes</li>
+                <li>Value types</li>
                 <li>Performance</li>
             </ul>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <div>
                 "But isn't C++ the language with the horrible error messages and all the crashing?"
             </div>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <div>That's old C++!</div>
             <div>New C++ is better!</div>
             <aside class="notes">
@@ -102,10 +91,10 @@
                 improvement over what you might remember C++ as, if you never used it
             </aside>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <div>So, what's changed?</div>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <section>
                 <table>
                     <tr>
@@ -199,10 +188,31 @@ double rms(const vector&lt;double> &v) {
 }                </code></pre>
             </section>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Why C++?</h3>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
+            <h3>Clear object lifetimes</h3>
+            <pre><code data-trim data-noescape class="cpp">
+string queryDb(const string &amp;q) {
+<div class="fragment highlight-current-code">  DbConnection conn("server", 9000);
+</div><div class="fragment highlight-current-code">  return conn.query(q);
+</div>}
+            </code></pre>
+        </section>
+        <section>
+            <h3>Clear object lifetimes</h3>
+            <pre><code data-trim data-noescape class="cpp">
+class Document {
+<div class="fragment highlight-current-code">  vector&lt;unique_ptr&lt;Elem>> objects_;
+</div>public:
+  void add(unique_ptr&ltElem> <span class="fragment highlight-current-code">&amp;&amp;</span>object) {
+    objects_.emplace_back(<span class="fragment highlight-current-code">move(object)</span>);
+  }
+};
+            </code></pre>
+        </section>
+        <section>
             <section>
                 <h3>Value types</h3>
                 <ul>
@@ -238,7 +248,7 @@ note: candidate function not viable: no known conversion from
                 </code></pre>
             </section>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Value types</h3>
             <pre><code data-trim data-noescape class="cpp">
 class Pos {
@@ -257,28 +267,7 @@ class Pos {
                 Highlight the "new C++" parts. TODO value type, UDLs
             </aside>
         </section>
-        <section data-background="GOTO_bg.png">
-            <h3>Clear object lifetimes</h3>
-            <pre><code data-trim data-noescape class="cpp">
-string queryDb(const string &amp;q) {
-<div class="fragment highlight-current-code">  DbConnection conn("server", 9000);
-</div><div class="fragment highlight-current-code">  return conn.query(q);
-</div>}
-            </code></pre>
-        </section>
-        <section data-background="GOTO_bg.png">
-            <h3>Clear object lifetimes</h3>
-            <pre><code data-trim data-noescape class="cpp">
-class Document {
-<div class="fragment highlight-current-code">  vector&lt;unique_ptr&lt;Elem>> objects_;
-</div>public:
-  void add(unique_ptr&ltElem> <span class="fragment highlight-current-code">&amp;&amp;</span>object) {
-    objects_.emplace_back(<span class="fragment highlight-current-code">move(object)</span>);
-  }
-};
-            </code></pre>
-        </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Performance</h3>
             <pre><code data-trim class="cpp">
 auto midPoint(const vector&lt;Pos> &amp;vec) {
@@ -286,12 +275,13 @@ auto midPoint(const vector&lt;Pos> &amp;vec) {
   return total / vec.size();
 }
             </code></pre>
-            <div class="fragment"><a href="https://godbolt.org/g/oBe7iy" target="_blank">Compiler Explorer link</a></div>
+            <div class="fragment"><a href="https://godbolt.org/g/oBe7iy" target="_blank">Compiler Explorer link</a>
+            </div>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>But wait, there's more!</h3>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Compilers</h3>
             <ul>
                 <li>Clang</li>
@@ -300,7 +290,7 @@ auto midPoint(const vector&lt;Pos> &amp;vec) {
                 <li>MSVC</li>
             </ul>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Sanitizers</h3>
             <ul>
                 <li>Memory accesses</li>
@@ -308,20 +298,20 @@ auto midPoint(const vector&lt;Pos> &amp;vec) {
                 <li>Thread safety</li>
             </ul>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Sanitizers</h3>
             <pre><code data-trim class="cpp">
 int main(int argc, const char *argv[]) {
    char array[10]{};
-   return array[11];
+   return array[10];
 }
             </code></pre>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Sanitizers</h3>
             <img class="stretch" src="sanitize.png">
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Smart editors</h3>
             <ul>
                 <li>vim/emacs &amp; <a href="https://valloric.github.io/YouCompleteMe/">YouCompleteMe</a></li>
@@ -329,15 +319,15 @@ int main(int argc, const char *argv[]) {
                 <li><a href="https://www.eclipse.org/cdt/">Eclipse CDT</a></li>
             </ul>
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Smart editors</h3>
             <img src="vim.png">
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Smart editors</h3>
             <img src="CLion.png">
         </section>
-        <section data-background="GOTO_bg.png">
+        <section>
             <h3>Community support</h3>
             <ul>
                 <li><a href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md">Core
@@ -348,13 +338,57 @@ int main(int argc, const char *argv[]) {
                 <li><a href="https://github.com/lefticus/cppbestpractices">cppbestpractices</a></li>
             </ul>
         </section>
-        <section data-background="GOTO_bg.png">
-            <h3>What are you waiting for?</h3>
-            <h5>Give C++ a try now!</h5>
+        <section>
+            <h3>C++ isn't dead</h3>
+            <h5>There's never been a better time to try it!</h5>
         </section>
+        <section>
+            <section>
+                <div>"What about Rust?"</div>
+            </section>
+            <section>
+                <h3>Rust</h3>
+                <ul>
+                    <li>Developed by Mozilla</li>
+                    <li>Memory-safe</li>
+                    <li>Value types</li>
+                    <li>Destructors</li>
+                    <li>LLVM codegen</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Value types</h3>
+                <pre><code data-trim class="rust">
+use std::ops::Add;
 
-        <!-------------->
-        <section data-background="Outro_Remember_To_Rate.png"></section>
+#[derive(Copy, Clone)]
+struct Pos { x: f32, y: f32 }
+
+impl Add for Pos {
+    type Output = Pos;
+
+    fn add(self, other: Pos) -> Pos {
+        Pos { x: self.x + other.x,
+              y: self.y + other.y, }
+    }
+}
+                </code></pre>
+            </section>
+            <section>
+                <h3>Performance</h3>
+                <pre><code class="rust" data-trim>
+pub fn mid_point(vec : &[Pos]) -> Pos {
+    let total : Pos = vec.iter().fold(
+        Pos { x: 0f32, y: 0f32},
+        |sum, x| sum + *x
+    );
+    total / (vec.len() as f32)
+}
+                </code></pre>
+                <div class="fragment"><a href="https://godbolt.org/g/o8ys5J" target="_blank">Compiler Explorer link</a>
+                </div>
+            </section>
+        </section>
     </div>
 </div>
 

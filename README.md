@@ -1,6 +1,4 @@
-Slides for GOTO 2018
+Slides for C++ isn't dead
 --------------------
 
-A talk I gave at GOTO 2018 on 26th April.
-
-View the slides at: https://mattgodbolt.github.io/goto-2018-cpp/#/
+A talk I gave at [Avast](https://www.avast.com/) in June 2018. Forked from a GOTO talk I did in April.
