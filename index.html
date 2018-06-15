@@ -127,7 +127,7 @@
                     <tr class="fragment">
                         <th>C++20</th>
                         <td>
-                            Concepts, ranges, coroutines... maybe?
+                            Concepts, ranges, contracts, coroutines... maybe?
                         </td>
                     </tr>
                 </table>
@@ -172,8 +172,7 @@ double rms(const vector&lt;double> &v) {
     return partialSum + elem * elem;
 }
 </div>double rms(const vector&lt;double> &v) {
-  return sqrt(accumulate(
-        v.begin(), v.end(), 0.0, accum));
+  return sqrt(accumulate(v.begin(), v.end(), 0.0, accum));
 }                </code></pre>
             </section>
             <section>
@@ -185,6 +184,12 @@ double rms(const vector&lt;double> &v) {
           return partialSum + elem * elem;
       }
 </div>  ));
+}                </code></pre>
+            </section>
+            <section>
+                <pre><code data-trim data-noescape class="cpp">
+double rms(const vector&lt;double> &v) {
+  return sqrt(inner_product(v.begin(), v.end(), v.begin(), 0.0));
 }                </code></pre>
             </section>
         </section>
@@ -206,7 +211,7 @@ string queryDb(const string &amp;q) {
 class Document {
 <div class="fragment highlight-current-code">  vector&lt;unique_ptr&lt;Elem>> objects_;
 </div>public:
-  void add(unique_ptr&ltElem> <span class="fragment highlight-current-code">&amp;&amp;</span>object) {
+  void add(<span class="fragment highlight-current-code">unique_ptr&ltElem> object</span>) {
     objects_.emplace_back(<span class="fragment highlight-current-code">move(object)</span>);
   }
 };
@@ -252,11 +257,11 @@ note: candidate function not viable: no known conversion from
             <h3>Value types</h3>
             <pre><code data-trim data-noescape class="cpp">
 class Pos {
-<div class="fragment highlight-current-code">  float x{};
-  float y{};</div>public:
-<div class="fragment highlight-current-code">  constexpr Pos() = default;
-</div><div class="fragment highlight-current-code">  constexpr Pos(float x, float y)
+<div class="fragment highlight-current-code">  float x = 0.0;
+  float y = 0.0;</div>public:
+<div class="fragment highlight-current-code">  constexpr Pos(float x, float y)
     : x(x), y(y) {}
+</div><div class="fragment highlight-current-code">  constexpr Pos() = default;
 </div><div class="fragment highlight-current-code">  constexpr Pos operator +(Pos other) const {
       return Pos(x + other.x, y + other.y);
   }
@@ -388,6 +393,15 @@ pub fn mid_point(vec : &[Pos]) -> Pos {
                 <div class="fragment"><a href="https://godbolt.org/g/o8ys5J" target="_blank">Compiler Explorer link</a>
                 </div>
             </section>
+        </section>
+        <section>
+            <h2>Thank you!</h2>
+            <ul>
+                <li><a href="mailto:matt@godbolt.org">matt@godbolt.org</a> / <a href="https://twitter.com/mattgodbolt">@mattgodbolt</a>
+                </li>
+                <li>Compiler Explorer: <a href="https://godbolt.org">https://godbolt.org</a></li>
+                <li>Blog: <a href="https://xania.org">https://xania.org</a></li>
+            </ul>
         </section>
     </div>
 </div>

@@ -1,4 +1,12 @@
-The pitch
+For Avast
+---------
+
+From discussions/chat:
+* `inner_product` is more appropriate for the example. ([Source](https://www.reddit.com/r/cpp/comments/8r1bnb/goto_2018_c_the_newest_old_language_matt_godbolt/e0o22os/))
+* `std::unique_ptr<...> &&` unnecessary in function argument ([Source](https://www.reddit.com/r/programming/comments/8r1bs1/goto_2018_c_the_newest_old_language_matt_godbolt/e0oujaf/)) 
+
+
+Old notes from the GOTO that spawned this
 ---------
 
 ### C++ - the Newest Old Language
