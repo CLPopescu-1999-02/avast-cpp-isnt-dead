@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/matthew/presentations/avast-cpp-isnt-dead",
+  "command": "/opt/compiler-explorer/clang-trunk/bin/clang++ -c /tmp/foo.o -c test2.cc",
+  "file": "/home/matthew/presentations/avast-cpp-isnt-dead/test2.cc"
+}
+]
