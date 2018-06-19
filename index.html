@@ -42,13 +42,14 @@
 <body>
 <div class="reveal">
     <div class="slides">
-        <section>
+        <section data-background="first-page.png"></section>
+        <section data-background="background.png">
             <h3><img class="no-border" src="cpp_logo.svg"><br>Why C++ isn't dead</h3>
             <h5>Matt Godbolt<br><a href="https://twitter.com/mattgodbolt">@mattgodbolt</a></h5>
             <h5>Avast, June 2018</h5>
         </section>
 
-        <section>
+        <section data-background="background.png">
             <h3>Who uses C++?</h3>
             <ul class="fragment">
                 <li>Games</li>
@@ -62,7 +63,7 @@
                 I'm sure there's more out there.
             </aside>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>But why C++?</h3>
             <aside class="notes">
                 Why do we use C++? Probably performance, or to interoperate with hardware easily.
@@ -70,7 +71,7 @@
                 Let's take a look at C++'s strengths.
             </aside>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>C++ strengths</h3>
             <ul>
                 <li>Clear object lifetimes</li>
@@ -78,12 +79,12 @@
                 <li>Performance</li>
             </ul>
         </section>
-        <section>
+        <section data-background="background.png">
             <div>
                 "But isn't C++ the language with the horrible error messages and all the crashing?"
             </div>
-        </section>
-        <section>
+        </section data-background="background.png">
+        <section data-background="background.png">
             <div>That's old C++!</div>
             <div>New C++ is better!</div>
             <aside class="notes">
@@ -91,10 +92,10 @@
                 improvement over what you might remember C++ as, if you never used it
             </aside>
         </section>
-        <section>
+        <section data-background="background.png">
             <div>So, what's changed?</div>
         </section>
-        <section>
+        <section data-background="background.png">
             <section>
                 <table>
                     <tr>
@@ -133,7 +134,7 @@
                 </table>
             </section>
             <!-- https://godbolt.org/g/okPnht -->
-            <section>
+            <section data-background="background.png">
                 <pre><code data-trim data-noescape class="cpp">
 double rms(const vector&lt;double> &v) {
   double sum = 0.0;
@@ -146,7 +147,7 @@ double rms(const vector&lt;double> &v) {
 }
                 </code></pre>
             </section>
-            <section>
+            <section data-background="background.png">
                 <pre><code data-trim data-noescape class="cpp">
 double rms(const vector&lt;double> &v) {
   <span class="fragment highlight-current-code">auto</span> sum = 0.0;
@@ -157,7 +158,7 @@ double rms(const vector&lt;double> &v) {
 }
                 </code></pre>
             </section>
-            <section>
+            <section data-background="background.png">
                 <pre><code data-trim data-noescape class="cpp">
 double rms(const vector&lt;double> &v) {
   auto sum = 0.0;
@@ -166,7 +167,7 @@ double rms(const vector&lt;double> &v) {
 </div>  return sqrt(sum);
 }                </code></pre>
             </section>
-            <section>
+            <section data-background="background.png">
                 <pre><code data-trim data-noescape class="cpp">
 <div class="fragment highlight-current-code">static double accum(double partialSum, double elem) {
     return partialSum + elem * elem;
@@ -175,7 +176,7 @@ double rms(const vector&lt;double> &v) {
   return sqrt(accumulate(v.begin(), v.end(), 0.0, accum));
 }                </code></pre>
             </section>
-            <section>
+            <section data-background="background.png">
                 <pre><code data-trim data-noescape class="cpp">
 double rms(const vector&lt;double> &v) {
   return sqrt(accumulate(
@@ -193,10 +194,10 @@ double rms(const vector&lt;double> &v) {
 }                </code></pre>
             </section>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Why C++?</h3>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Clear object lifetimes</h3>
             <pre><code data-trim data-noescape class="cpp">
 string queryDb(const string &amp;q) {
@@ -205,7 +206,7 @@ string queryDb(const string &amp;q) {
 </div><div class="fragment highlight-current-code">}
 </div></code></pre>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Clear object lifetimes</h3>
             <pre><code data-trim data-noescape class="cpp">
 class Document {
@@ -217,7 +218,7 @@ class Document {
 };
             </code></pre>
         </section>
-        <section>
+        <section data-background="background.png">
             <section>
                 <h3>Value types</h3>
                 <ul>
@@ -252,8 +253,7 @@ note: candidate function not viable: no known conversion from
     'Quantity' to 'Price' for 2nd argument
                 </code></pre>
             </section>
-        </section>
-        <section>
+            <section>
 <pre><code data-trim data-noescape class="cpp">
 void buyShares(const char *symbol,
                Price price,
@@ -262,8 +262,9 @@ void buyShares(const char *symbol,
 buyShares("GOOG", Price(975.0), Quantity(800));
 <span class="fragment">buyShares("GOOG", 975.0_px, 800_qty);</span>
             </code></pre>
+            </section>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Value types</h3>
             <pre><code data-trim data-noescape class="cpp">
 class Pos {
@@ -282,7 +283,7 @@ class Pos {
                 Highlight the "new C++" parts. TODO value type, UDLs
             </aside>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Performance</h3>
             <pre><code data-trim class="cpp">
 auto midPoint(const vector&lt;Pos> &amp;vec) {
@@ -293,10 +294,10 @@ auto midPoint(const vector&lt;Pos> &amp;vec) {
             <div class="fragment"><a href="https://godbolt.org/g/oBe7iy" target="_blank">Compiler Explorer link</a>
             </div>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>But wait, there's more!</h3>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Compilers</h3>
             <ul>
                 <li>Clang</li>
@@ -305,7 +306,7 @@ auto midPoint(const vector&lt;Pos> &amp;vec) {
                 <li>MSVC</li>
             </ul>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Sanitizers</h3>
             <ul>
                 <li>Memory accesses</li>
@@ -313,7 +314,7 @@ auto midPoint(const vector&lt;Pos> &amp;vec) {
                 <li>Thread safety</li>
             </ul>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Sanitizers</h3>
             <pre><code data-trim class="cpp">
 int main(int argc, const char *argv[]) {
@@ -322,15 +323,15 @@ int main(int argc, const char *argv[]) {
 }
             </code></pre>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Sanitizers</h3>
             <img class="stretch" src="sanitize.png">
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Better warnings</h3>
             <img class="stretch" src="compilers-better.png">
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Static checkers</h3>
             <pre><code data-trim class="cpp">
 int main(int argc, const char *argv[]) {
@@ -339,11 +340,11 @@ int main(int argc, const char *argv[]) {
 }
             </code></pre>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Static checkers</h3>
             <img class="stretch" src="analyse.png">
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Smart editors</h3>
             <ul>
                 <li>vim/emacs &amp; <a href="https://valloric.github.io/YouCompleteMe/">YouCompleteMe</a></li>
@@ -351,15 +352,15 @@ int main(int argc, const char *argv[]) {
                 <li><a href="https://www.eclipse.org/cdt/">Eclipse CDT</a></li>
             </ul>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Smart editors</h3>
             <img src="vim.png">
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Smart editors</h3>
             <img src="CLion.png">
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>Community support</h3>
             <ul>
                 <li><a href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md">Core
@@ -370,12 +371,12 @@ int main(int argc, const char *argv[]) {
                 <li><a href="https://github.com/lefticus/cppbestpractices">cppbestpractices</a></li>
             </ul>
         </section>
-        <section>
+        <section data-background="background.png">
             <h3>C++ isn't dead</h3>
             <h3>C++ is evolving</h3>
             <h5>There's never been a better time to try it!</h5>
         </section>
-        <section>
+        <section data-background="background.png">
             <section>
                 <div>"What about Rust?"</div>
             </section>
@@ -422,7 +423,7 @@ pub fn mid_point(vec : &[Pos]) -> Pos {
                 </div>
             </section>
         </section>
-        <section>
+        <section data-background="background.png">
             <h2>Thank you!</h2>
             <ul>
                 <li><a href="mailto:matt@godbolt.org">matt@godbolt.org</a> / <a href="https://twitter.com/mattgodbolt">@mattgodbolt</a>
