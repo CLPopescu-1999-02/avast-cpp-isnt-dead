@@ -26,6 +26,10 @@
             box-shadow: none !important;
         }
 
+        div.quote {
+            max-width: 70%;
+            margin: auto;
+        }
     </style>
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
@@ -80,13 +84,13 @@
             </ul>
         </section>
         <section data-background="background.png">
-            <div>
+            <div class="quote">
                 "But isn't C++ the language with the horrible error messages and all the crashing?"
             </div>
         </section data-background="background.png">
         <section data-background="background.png">
             <div>That's old C++!</div>
-            <div>New C++ is better!</div>
+            <div class="fragment">New C++ is better!</div>
             <aside class="notes">
                 Ok this is going to be a bit evangelical. Modern C++ is not perfect, but it's a huge
                 improvement over what you might remember C++ as, if you never used it
@@ -279,9 +283,6 @@ class Pos {
 </div>  // and so on for other operators...
 };
             </code></pre>
-            <aside class="notes">
-                Highlight the "new C++" parts. TODO value type, UDLs
-            </aside>
         </section>
         <section data-background="background.png">
             <h3>Performance</h3>
@@ -312,6 +313,7 @@ auto midPoint(const vector&lt;Pos> &amp;vec) {
                 <li>Memory accesses</li>
                 <li>Undefined behaviour</li>
                 <li>Thread safety</li>
+                <li class="fragment">Coming soon: aliasing?</li>
             </ul>
         </section>
         <section data-background="background.png">
@@ -321,6 +323,10 @@ int main(int argc, const char *argv[]) {
    char array[10]{};
    return array[10];
 }
+            </code></pre>
+            <pre class="fragment"><code data-trim class="bash">
+                $ g++ test.cc -fsanitize=address
+                $ ./a.out
             </code></pre>
         </section>
         <section data-background="background.png">
@@ -343,6 +349,7 @@ int main(int argc, const char *argv[]) {
         <section data-background="background.png">
             <h3>Static checkers</h3>
             <img class="stretch" src="analyse.png">
+            <!-- TODO: CE link -->
         </section>
         <section data-background="background.png">
             <h3>Smart editors</h3>
@@ -362,19 +369,21 @@ int main(int argc, const char *argv[]) {
         </section>
         <section data-background="background.png">
             <h3>Community support</h3>
+            <!-- TODO maybe have some examples for GSL/guidelines -->
             <ul>
                 <li><a href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md">Core
                     guidelines</a></li>
                 <li><a href="https://github.com/Microsoft/GSL">Guideline support library</a></li>
                 <li><a href="http://www.includecpp.org/"><code>#include&lt;C++&gt;</code></a></li>
                 <li><a href="https://cpplang.now.sh/">Slack</a></li>
+                <!-- TODO: videos/etc, lefticus -->
                 <li><a href="https://github.com/lefticus/cppbestpractices">cppbestpractices</a></li>
             </ul>
         </section>
         <section data-background="background.png">
             <h3>C++ isn't dead</h3>
-            <h3>C++ is evolving</h3>
-            <h5>There's never been a better time to try it!</h5>
+            <h3 class="fragment">C++ is evolving!</h3>
+            <h5 class="fragment">There's never been a better time to try it!</h5>
         </section>
         <section data-background="background.png">
             <section>
@@ -450,9 +459,9 @@ pub fn mid_point(vec : &[Pos]) -> Pos {
             {src: 'reveal.js/plugin/markdown/markdown.js'},
             {src: 'reveal.js/plugin/notes/notes.js', async: true},
             {
-                src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
-                    hljs.initHighlightingOnLoad();
-                }
+                src: 'reveal.js/plugin/highlight/highlight.js',
+                async: true,
+                callback: () => hljs.initHighlightingOnLoad()
             }
         ]
     });
