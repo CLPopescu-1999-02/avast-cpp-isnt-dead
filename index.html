@@ -349,7 +349,7 @@ int main(int argc, const char *argv[]) {
         <section data-background="background.png">
             <h3>Static checkers</h3>
             <img class="stretch" src="analyse.png">
-            <!-- TODO: CE link -->
+            <a class="fragment" href="https://godbolt.org/g/DngU6o" target="_blank">Compiler Explorer link</a>
         </section>
         <section data-background="background.png">
             <h3>Smart editors</h3>
@@ -368,17 +368,46 @@ int main(int argc, const char *argv[]) {
             <img src="CLion.png">
         </section>
         <section data-background="background.png">
-            <h3>Community support</h3>
-            <!-- TODO maybe have some examples for GSL/guidelines -->
-            <ul>
-                <li><a href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md">Core
-                    guidelines</a></li>
-                <li><a href="https://github.com/Microsoft/GSL">Guideline support library</a></li>
-                <li><a href="http://www.includecpp.org/"><code>#include&lt;C++&gt;</code></a></li>
-                <li><a href="https://cpplang.now.sh/">Slack</a></li>
-                <!-- TODO: videos/etc, lefticus -->
-                <li><a href="https://github.com/lefticus/cppbestpractices">cppbestpractices</a></li>
-            </ul>
+            <section>
+                <h3>Support &mdash; libraries</h3>
+                <ul>
+                    <li><a target="_blank"
+                           href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md">Core
+                        guidelines</a></li>
+                    <li><a target="_blank" href="https://github.com/Microsoft/GSL">Guideline support library</a></li>
+                    <li><a target="_blank" href="https://www.boost.org/">Boost</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Example Guidelines</h3>
+                <ul>
+                    <li><b>NL.1:</b> Don't say in comments what can be clearly stated in code</li>
+                    <li><b>NL.5:</b> Avoid encoding type information in names</li>
+                    <li><b>R.20:</b> Use <code>unique_ptr</code> or <code>shared_ptr</code> to represent ownership</li>
+                    <li><b>R.21:</b> Prefer <code>unique_ptr</code> over <code>shared_ptr</code> unless you need to
+                        share ownership
+                    </li>
+                    <li><b>Per.11:</b> Move computation from run time to compile time</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Support &mdash; community</h3>
+                <ul>
+                    <li><a target="_blank" href="http://www.includecpp.org/"><code>#include&lt;C++&gt;</code></a></li>
+                    <li><a target="_blank" href="https://cpplang.now.sh/">Slack</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Support &mdash; learning</h3>
+                <ul>
+                    <li><a target="_blank" href="https://www.youtube.com/user/lefticus1">C++ Weekly</a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/user/CppCon">CppCon</a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/user/BoostCon">C++Now</a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/user/MeetingCPP">Meeting C++</a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/channel/UCrRR5mU5aqvtZAuEGYfdTjw">Pacific++</a>
+                    </li>
+                </ul>
+            </section>
         </section>
         <section data-background="background.png">
             <h3>C++ isn't dead</h3>
@@ -450,7 +479,7 @@ pub fn mid_point(vec : &[Pos]) -> Pos {
 <script>
     Reveal.initialize({
         history: true,
-        transition: false,
+        transition: 'fade',
         slideNumber: true,
         width: 1280,
         height: 720,
