@@ -170,6 +170,9 @@ double rms(const vector&lt;double> &v) {
     sum += i * i;
 </div>  return sqrt(sum);
 }                </code></pre>
+                <div class="fragment">
+                    <a href="https://godbolt.org/g/VsC6gS" target="_blank">Compiler Explorer link</a>
+                </div>
             </section>
             <section data-background="background.png">
                 <pre><code data-trim data-noescape class="cpp">
@@ -196,6 +199,9 @@ double rms(const vector&lt;double> &v) {
 double rms(const vector&lt;double> &v) {
   return sqrt(inner_product(v.begin(), v.end(), v.begin(), 0.0));
 }                </code></pre>
+                <div class="fragment">
+                    <a href="https://godbolt.org/g/jDmjZY" target="_blank">Compiler Explorer link</a>
+                </div>
             </section>
         </section>
         <section data-background="background.png">
